@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # internal apps
     'bot',
     'university',
+    'quotes',
 ]
 
 MIDDLEWARE = [
