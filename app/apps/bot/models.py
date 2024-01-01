@@ -23,8 +23,8 @@ class TelegramUser(BaseModel):
     chat_id = models.CharField(max_length=40, unique=True)
     username = models.CharField(max_length=40, unique=True, null=True, blank=True)
     name = models.CharField(max_length=40, null=True)
-    language = models.CharField(max_length=3, choices=LanguageChoices.choices,
-                                default=LanguageChoices.ENGLISH)
+    language = models.CharField(max_length=6, choices=LanguageChoices.choices,
+                                default=LanguageChoices.UZBEK_LT)
     step = models.SmallIntegerField(choices=BotUserSteps.choices, default=BotUserSteps.LISTING_LANGUAGE)
 
     def __str__(self):

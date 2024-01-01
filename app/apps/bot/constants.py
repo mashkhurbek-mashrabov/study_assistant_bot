@@ -8,8 +8,8 @@ WEBHOOK_URL_PATH = 'bot/'
 
 
 class LanguageChoices(models.TextChoices):
-    UZBEK = 'uz', 'Uzbek'
-    ENGLISH = 'en', 'English'
+    UZBEK_LT = 'uz_lt', 'Uzbek'
+    UZBEK_KR = 'en_kr', 'Ўзбек'
 
 
 class BotUserSteps(models.IntegerChoices):

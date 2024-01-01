@@ -34,10 +34,10 @@ class BotController(BaseController):
         pass
 
     def list_language(self, text: str = None, edit_lang: bool = False):
-        uzbek = KeyboardButton(text=self.messages('uzbek'))
-        english = KeyboardButton(text=self.messages('english'))
+        uzbek_lt = KeyboardButton(text=self.messages('uzbek latin'))
+        uzbek_kr = KeyboardButton(text=self.messages('uzbek krill'))
         markup = self.reply_markup()
-        markup.add(uzbek, english)
+        markup.add(uzbek_lt, uzbek_kr)
         if edit_lang:
             markup.add(self.back_reply_button)
         self.send_message(message_text=text or self.messages('select the language'), reply_markup=markup)
@@ -45,8 +45,8 @@ class BotController(BaseController):
 
     def set_language(self):
         languages = {
-            self.messages('english'): LanguageChoices.ENGLISH,
-            self.messages('uzbek'): LanguageChoices.UZBEK
+            self.messages('uzbek krill'): LanguageChoices.UZBEK_KR,
+            self.messages('uzbek latin'): LanguageChoices.UZBEK_LT
         }
         try:
             self.user.language = languages[self.message_text]

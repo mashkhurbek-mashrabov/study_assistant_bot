@@ -20,7 +20,7 @@ class TelegramUserModelTest(TestCase):
             chat_id="test_chat_id",
             username="test_username",
             name="Test User",
-            language=LanguageChoices.ENGLISH,  # Assuming ENGLISH is one of the choices in LanguageChoices
+            language=LanguageChoices.UZBEK_KR,  # Assuming UZBEK_KR is one of the choices in LanguageChoices
             step=BotUserSteps.LISTING_LANGUAGE  # Assuming LISTING_LANGUAGE is a valid step in BotUserSteps
         )
 
@@ -31,7 +31,7 @@ class TelegramUserModelTest(TestCase):
         user = TelegramUser.objects.get(chat_id="test_chat_id")
         self.assertEqual(user.username, "test_username")
         self.assertEqual(user.name, "Test User")
-        self.assertEqual(user.language, LanguageChoices.ENGLISH)
+        self.assertEqual(user.language, LanguageChoices.UZBEK_KR)
         self.assertEqual(user.step, BotUserSteps.LISTING_LANGUAGE)
 
     def test_telegram_user_string_representation(self):
@@ -51,7 +51,7 @@ class TelegramUserModelTest(TestCase):
                 chat_id="test_chat_id",  # Attempting to create a user with an existing chat_id
                 username="another_username",
                 name="Another User",
-                language=LanguageChoices.ENGLISH,
+                language=LanguageChoices.UZBEK_KR,
                 step=BotUserSteps.MAIN_MENU
             )
 
@@ -63,7 +63,7 @@ class TelegramUserModelTest(TestCase):
             chat_id='blank_chat_id',
             username=None,
             name='Test',
-            language=LanguageChoices.ENGLISH,
+            language=LanguageChoices.UZBEK_KR,
             step=BotUserSteps.LISTING_LANGUAGE
         )
         self.assertIsNone(blank_user.username)
@@ -78,7 +78,7 @@ class TelegramUserModelTest(TestCase):
             name='Default Language User',
             step=BotUserSteps.LISTING_LANGUAGE
         )
-        self.assertEqual(default_language_user.language, LanguageChoices.ENGLISH)
+        self.assertEqual(default_language_user.language, LanguageChoices.UZBEK_KR)
 
     def test_telegram_user_invalid_step(self):
         """
@@ -89,7 +89,7 @@ class TelegramUserModelTest(TestCase):
                 chat_id='invalid_step_chat_id',
                 username='invalid_step_username',
                 name='Invalid Step User',
-                language=LanguageChoices.ENGLISH,
+                language=LanguageChoices.UZBEK_KR,
                 step=999  # Providing an invalid step value
             )
         except ValueError:

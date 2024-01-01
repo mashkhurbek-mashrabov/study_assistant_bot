@@ -1,5 +1,3 @@
-import uuid
-
 from django.db import models
 
 
@@ -10,7 +8,6 @@ class BaseModel(models.Model):
     Provides common timestamps and abstract model behavior with a UUID primary key.
 
     Attributes:
-        id (models.UUIDField): Unique identifier for the model stored as a UUID.
         created_at (models.DateTimeField): Automatically set to the time of model creation.
         updated_at (models.DateTimeField): Automatically updated on every model save.
 
@@ -20,7 +17,6 @@ class BaseModel(models.Model):
         ordering (list[str]): Default ordering for all child models, descending by created_at.
     """
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
