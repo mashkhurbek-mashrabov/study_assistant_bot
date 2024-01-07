@@ -19,10 +19,18 @@ app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 app.conf.beat_schedule = {
-    # 'test-task': {
-    #     'task': 'config.tasks.add',
-    #     'schedule': crontab(),
-    # },
+    'run-task-8am': {
+        'task': 'quotes.tasks.sending_daily_quote_task',
+        'schedule': crontab(hour=8, minute=0),
+    },
+    'run-task-1pm': {
+        'task': 'quotes.tasks.sending_daily_quote_task',
+        'schedule': crontab(hour=13, minute=0),
+    },
+    'run-task-7pm': {
+        'task': 'quotes.tasks.sending_daily_quote_task',
+        'schedule': crontab(hour=19, minute=0),
+    },
 }
 
 '''
