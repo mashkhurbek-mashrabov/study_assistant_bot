@@ -4,7 +4,7 @@ from django.db import models
 
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
 EXCEPTION_CHANNEL_ID = os.environ.get('EXCEPTION_CHANNEL_ID')
-WEBHOOK_URL_PATH = 'bot/'
+WEBHOOK_URL_PATH = 'ilm/bot/'
 
 
 class LanguageChoices(models.TextChoices):

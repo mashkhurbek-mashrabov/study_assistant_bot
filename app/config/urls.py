@@ -23,7 +23,7 @@ from bot.constants import WEBHOOK_URL_PATH
 from bot.webhook_handler import webhook_handler
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('ilm/admin/', admin.site.urls),
     path(WEBHOOK_URL_PATH, webhook_handler),
 ]
 
