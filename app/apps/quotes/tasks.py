@@ -17,3 +17,12 @@ def sending_daily_quote_task():
                 quote.save()
         except IndexError:
             continue
+
+@shared_task
+def send_selected_quote_task(quote_ids: list):
+    quotes = Quote.objects.filter(id__in=quote_ids).prefetch_related('groups')
+    for quote in quotes:
+        for goup in quote.groups.all():
+            bot.send_message(chat_id=goup.telegram_id, text=quote.text, parse_mode='HTML')
+            quote.was_send = True
+            quote.save()
