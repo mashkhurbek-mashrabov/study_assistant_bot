@@ -9,8 +9,8 @@ admin.site.register(Author)
 
 @admin.register(Quote)
 class QuoteAdmin(admin.ModelAdmin):
-    list_display = ('text', 'author', 'is_active', 'created_at')
-    list_filter = ('is_active', 'groups', 'author', 'created_at')
+    list_display = ('text', 'author', 'was_send', 'is_active', 'created_at')
+    list_filter = ('was_send','is_active', 'groups', 'author', 'created_at')
     search_fields = ('text',)
     filter_horizontal = ('groups',)
     actions = ('send_quote_action',)
