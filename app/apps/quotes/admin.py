@@ -9,7 +9,7 @@ admin.site.register(Author)
 
 @admin.register(Quote)
 class QuoteAdmin(admin.ModelAdmin):
-    list_display = ('text', 'author', 'was_send', 'is_active', 'created_at')
+    list_display = ('short_text', 'author', 'was_send', 'is_active', 'created_at')
     list_filter = ('was_send','is_active', 'groups', 'author', 'created_at')
     search_fields = ('text',)
     filter_horizontal = ('groups',)
@@ -19,3 +19,7 @@ class QuoteAdmin(admin.ModelAdmin):
         send_selected_quote_task.delay(list(queryset.values_list('id', flat=True)))
 
     send_quote_action.short_description = _('Send selected quotes')
+
+    def short_text(self, obj):
+        return obj.text[0:100]
+    short_text.short_description = _('Text')
