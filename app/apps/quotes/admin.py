@@ -16,6 +16,6 @@ class QuoteAdmin(admin.ModelAdmin):
     actions = ('send_quote_action',)
 
     def send_quote_action(self, request, queryset):
-        send_selected_quote_task.delay(queryset.values_list('id', flat=True))
+        send_selected_quote_task.delay(list(queryset.values_list('id', flat=True)))
 
     send_quote_action.short_description = _('Send selected quotes')
